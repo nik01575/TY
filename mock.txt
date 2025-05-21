@@ -1,0 +1,229 @@
+function outer() {
+  let outerVar = 'Outer';
+  let result = [];
+  for (var i = 0; i < 3; i++) {
+    result.push(function() {
+      console.log(outerVar + ' ' + i);
+    });
+  }
+  return result;
+}
+
+const closures = outer();
+closures[0]();
+closures[1]();
+closures[2]();
+
+
+
+let globalVar = 'Global';
+
+function myFunction() {
+  console.log(globalVar);
+  var globalVar = 'Local';
+  console.log(globalVar);
+}
+
+myFunction();
+console.log(globalVar);
+
+
+
+
+var message = 'Global Message';
+
+(function() {
+  var message = 'IIFE Message';
+  console.log('Inside IIFE:', message);
+})();
+
+console.log('Outside IIFE:', message);
+
+
+
+
+
+
+
+let a = 10;
+
+function first() {
+  let b = 20;
+  function second() {
+    let c = 30;
+    console.log(a + b + c);
+  }
+  second();
+  console.log(a + b);
+  // console.log(c); // Uncommenting this would cause an error
+}
+
+first();
+console.log(a);
+// console.log(b); // Uncommenting this would cause an error
+// console.log(c); // Uncommenting this would cause an error
+
+
+
+
+
+
+
+for (var i = 1; i <= 5; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, i * 1000);
+}
+
+
+
+
+console.log(functionDeclaration); // ?
+console.log(functionExpression); // ?
+
+function functionDeclaration() {
+  return "Declared function";
+}
+
+var functionExpression = function() {
+  return "Expressed function";
+};
+
+console.log(functionDeclaration()); // ?
+console.log(functionExpression()); // ?
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scope Test</title>
+</head>
+<body>
+  <script>
+    var globalVar = 'I am global';
+  </script>
+  <script>
+    console.log(globalVar);
+    function checkGlobal() {
+      console.log(globalVar);
+      globalVar = 'I am modified';
+    }
+    checkGlobal();
+    console.log(globalVar);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const myObject = {
+  value: 10,
+  getValueArrow: () => {
+    console.log(this.value);
+  },
+  getValueFunction: function() {
+    console.log(this.value);
+  },
+};
+
+myObject.getValueArrow();
+myObject.getValueFunction();
+
+const standaloneArrow = myObject.getValueArrow;
+standaloneArrow();
+
+const standaloneFunction = myObject.getValueFunction;
+standaloneFunction();
+
+
+
+
+
+
+
+
+
+
+
+
+function createIncrementers() {
+  const incrementers = [];
+  for (let i = 0; i < 3; i++) {
+    incrementers.push(function(val) {
+      return val + i;
+    });
+  }
+  return incrementers;
+}
+
+const increments = createIncrementers();
+console.log(increments[0](5)); // ?
+console.log(increments[1](5)); // ?
+console.log(increments[2](5)); // ?
+
+
+
+
+
+
+
+
+
+
+
+let outerMost = 'Outer Most';
+
+function levelOne() {
+  let levelOneVar = 'Level One';
+  function levelTwo() {
+    let levelTwoVar = 'Level Two';
+    function levelThree() {
+      let levelThreeVar = 'Level Three';
+      console.log(outerMost, levelOneVar, levelTwoVar, levelThreeVar);
+    }
+    levelThree();
+    console.log(outerMost, levelOneVar, levelTwoVar);
+    // console.log(levelThreeVar); // Error
+  }
+  levelTwo();
+  console.log(outerMost, levelOneVar);
+  // console.log(levelTwoVar); // Error
+  // console.log(levelThreeVar); // Error
+}
+
+levelOne();
+console.log(outerMost);
+// console.log(levelOneVar); // Error
+// console.log(levelTwoVar); // Error
+// console.log(levelThreeVar); // Error
+
+
+
+
+
+
+
+
