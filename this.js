@@ -1,6 +1,8 @@
 // "use strict";
 // a =  10
 
+const { jsx } = require("react/jsx-runtime");
+
 // console.log(window);
 
 // let aa = 10;
@@ -39,22 +41,13 @@
 // console.log(this.window);
 // console.log(this);
 
-
-
-
-
-
 //! In a function under non strict condition this will pint to window object.
 //! In the strict mode the value of this inside a function in the global scope is undefined.
-
 
 // function func() {
 //     console.log(this);
 // }
 // func();
-
-
-
 
 //! If we store "this" as a value in the object, it will point to the window object
 
@@ -70,21 +63,12 @@
 
 // console.log(a["print"]());
 
-
-
-
-
 //& Lexical scope, also known as static scope, determines a variable's accessibility in a program based on where it's declared in the code's structure. Essentially, a function has acccess to variables in its own scope and the scope of its parent functions, all the way up to the global scope. This means an inner function can access the variables from its outer functin, but not vice versa.
-
 
 //& Lexical scope in JavaScript determines the accessibility of variables based on their physical location within the code. It means that a function has access to the variables declared in its own scope, as well as the scopes of its parent functions, and so on, up to the global scope. This creates a chain of scopes, where inner functions can access variables from outer functions, but not vice versa.
 //& For example, if a variable is declared inside a function, it is only accessible within that function and any nested functions. If a variable is declared outside of any function, it is in the global scope and accessible from anywhere in the code.
 
-
-
-
 //~ arrowFunction : It will depend based on the lexical scope.
-
 
 // let person = {
 //     val : this,
@@ -97,7 +81,7 @@
 
 //     printName : () => {
 //         console.log(this); // window : lexical scoping
-        
+
 //     },
 //     sayHello(){
 //         console.log(this);  // object
@@ -120,17 +104,12 @@
 // person.printName()
 // person.fun()
 
-
-
 // let x = (name, age)=>{
 //     this.name = name ;
 //     this.age = age;
 // }
 // let res = new x("a" , 22);
 // console.log(res);
-
-
-
 
 // function abc(a,b){
 //     // console.log(a);
@@ -139,16 +118,62 @@
 // }
 // abc();
 
-
-
-
 // {
 //     var a =10;
 // }
 // console.log(a);
 
-
 // {
 //     let b = 10;
 // }
 // console.log(b);
+
+// Introduction of js
+// History
+// Characteristic : Java / Js
+// JSE
+// js file linking
+// tokens
+
+var value = "Global Value";
+
+const obj = {
+  value: "Object Value",
+  method: function () {
+    console.log("1:", this.value);
+
+    const arrowFunc = () => {
+      console.log("2:", this.value);
+    };
+    arrowFunc();
+
+    function regularFunc() {
+      console.log("3:", this.value);
+    }
+    regularFunc();
+
+    const anotherObj = {
+      value: "Another Object Value",
+      innerMethod: function () {
+        console.log("4:", this.value);
+        const innerArrow = () => {
+          console.log("5:", this.value);
+        };
+        innerArrow();
+      },
+    };
+    anotherObj.innerMethod();
+  },
+};
+
+const f1 = obj.method;
+const f2 = obj.method.bind({ value: "Bound Value" });
+const f3 = () => obj.method(); // Arrow function wrapper
+
+obj.method();
+console.log("---");
+f1();
+console.log("---");
+f2();
+console.log("---");
+f3();

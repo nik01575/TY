@@ -118,11 +118,11 @@
 
 
 
-async function abc(){
-    let promise = await fetch("https://api.escuelajs.co/api/v1/products")
-    let res =await promise.json()
-    console.log(res);
-}
+// async function abc(){
+//     let promise = await fetch("https://api.escuelajs.co/api/v1/products")
+//     let res = await promise.json()
+//     console.log(res);
+// }
 
-abc()
+// abc()
 
