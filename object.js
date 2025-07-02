@@ -67,8 +67,6 @@ let emp = {
         console.log("HEllo" +  " " + name);
     },
     1 : "number value",
-    
-
    
 };
 
@@ -272,18 +270,18 @@ let emp = {
 
 // Object.defineProperties(obj, props)
 
-const object1 = {};
+// const object1 = {};
 
-Object.defineProperties(object1, {
-  property1: {
-    value: 42,
-    writable: true,
-  },
-  property2: {
-    value: 22
-  },
+// Object.defineProperties(object1, {
+//   property1: {
+//     value: 42,
+//     writable: true,
+//   },
+//   property2: {
+//     value: 22
+//   },
 
-});
+// });
 
 // console.log(object1.property1);
 // console.log(object1);
@@ -447,43 +445,3 @@ Object.defineProperties(object1, {
 // }
 
 
-
-//! Array.reduce() : The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value. It processes the array from left to right and carries an "accumulator" value along with it.
-
-//~ Syntax : reduce(callbackFn, initialValue)
-
-//~ CallbackFn : A function to execute for each element in the array. Its return value becomes the value of the accumulator.For the last invocation, the return value becomes the return value of reduce(). The function is called with the following arguments: callbackFn(Accumulator , currentValue , currentIndex, array)
-//~ initialValue : It's the starting point for the accumulation process. If you provide an initialValue, the accumulator in the first iteration of reduce() will be set to this value, and the reducer function will be executed on the first element of the array.
-
-
-// const array1 = [1, 2, 3, 4];
-
-// const initVal = 0;
-
-// const sum = array1.reduce(
-//   (acc, currVal) => acc + currVal,
-//   initVal,
-// );
-
-// console.log(sum);
-
-
-const users = [
-    { fName : "akshay", lName : "saini" , age : 26},
-    { fName : "donald", lName : "trump" , age : 75},
-    { fName : "elon", lName : "musk" , age : 50},
-    { fName : "deepika", lName : "padukone" , age : 26},
-]
-
-// const output = users.filter((x)=> x.age<30).map(x => x.fName)
-// console.log(output);
-
-const res = users.reduce((acc, val) => {
-    console.log(acc);
-    console.log(val);
-    if (val.age < 30) {
-        acc.push(val.fName);
-    }
-    return acc;
-}, []);
-console.log(res);

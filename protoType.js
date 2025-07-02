@@ -13,7 +13,8 @@
 //     this.ageOfPerson = age;
 // }
 
-// Person.prototype.occupation = "Student";
+// // // Person.prototype.occupation = "Student";
+
 // Person.prototype.printName = function (){
 //     console.log(`The student name is ${this.nameOfPerson}`);
 // }
@@ -65,3 +66,40 @@
 
 
 //! Prototype Chaining : Prototype chaining is a mechanism in JavaScript that allows objects to inherit properties and methods from other objects. Every object in JavaScript has an internal link to another object called its prototype. That prototype object also has a prototype, and so on, creating a chain of inherited properties and methods. The chain ends when a prototype with null is reached.
+
+
+
+
+
+
+
+
+//!----------------------------Shallow And Deep Copy--------------------------
+
+// let obj = {
+//     id:1,
+//     name:"abc",
+//     address : {
+//         city:"Delhi",
+//         street : "rajajinagar"
+//     }
+// }
+
+// let sC = {...obj}
+// let sC = obj
+// let sC = Object.assign({}, obj)
+
+
+
+// let dC = JSON.parse(JSON.stringify(obj))
+// let dC = structuredClone(obj)
+
+
+// obj.address.city = "Mumbai"
+// console.log(obj.address.city);
+// console.log(dC.address.city);
+
+// obj.id = 2;
+// console.log(obj.id);
+// console.log(dC.id);
+

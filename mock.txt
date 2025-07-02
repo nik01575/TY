@@ -1,5 +1,6 @@
 function outer() {
   let outerVar = 'Outer';
+  c
   let result = [];
   for (var i = 0; i < 3; i++) {
     result.push(function() {

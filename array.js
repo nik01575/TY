@@ -38,8 +38,9 @@
 
 
 
-// var arr1 = Array(3);
+// var arr1 = Array();
 // console.log(arr1);
+// console.log(arr1.length);
 // arr1[0] = "a";
 // arr1[1] = "b";
 // arr1[2] = "c";
@@ -48,8 +49,9 @@
 // console.log(arr1);
 
 
-// var arr2 = new Array(3);
+// var arr2 = new Array(3,3);
 // console.log(arr2);
+// console.log(arr2.length);
 // arr2[0] = "a";
 // arr2[1] = "b";
 // arr2[2] = "c";
@@ -127,7 +129,7 @@
 
 
 //! pop : removing element at the last index
-var cart = ["laptop", "bag", "marker", "mobile", "ccd"];
+// var cart = ["laptop", "bag", "marker", "mobile", "ccd"];
 // console.log("Pop");
 // console.log(cart);
 // cart.pop()
@@ -209,6 +211,7 @@ var cart = ["laptop", "bag", "marker", "mobile", "ccd"];
 
 // console.log(pid);
 // var eid = pid.entries();
+// console.log(eid);
 // console.log("Shushant", eid.next().value[1]);
 // console.log("Shweta", eid.next().value[1]);
 // console.log("yogesh", eid.next().value[1]);
@@ -226,15 +229,27 @@ var cart = ["laptop", "bag", "marker", "mobile", "ccd"];
 // changes in the orginal array
 // can't change the length of the array
 // nothing will change before the target element
+// extract the element between start and end ( excluding )
 
 
-// let arr = [ 1, 2 , 3 , 4 , 5, 6 , 7];
-// console.log(arr.copyWithin(3,0,3));  //  1 2 3 
-// console.log(arr.copyWithin(4,5,6));  
+// let arr = [ 10,100,200,300,400,600];
+// console.log(arr.copyWithin(3,0,3));  //  1 2 3 1 2 3 7
+// console.log(arr.copyWithin(1,3,5));  // 1 2 3 4 5 1 7
 
 
 // let arr2 = [ 1 ,2 , 3 , 1 , 2 , 3 ,7]
-// console.log(arr2.copyWithin(4,3,5));  
+// console.log(arr2.length);
+// console.log(arr2.copyWithin(4,3,5));  // 1 2 3 1 2 1 7
+
+
+// let arr2 = [ 1 ,2 , 3 , 4 , 5 , 6 ,7 , 8 , 9 , 10 , 11]
+// console.log(arr2.length);
+// console.log(arr2.copyWithin(3,5,7));  // 1 2 3 6 7 6 7 8 9
+
+
+// let arr2 = [ 10,20,30,1,2,20,30,80]
+// console.log(arr2.length);
+// console.log(arr2.copyWithin(1,6,8));  // 10 40 10
 
 //! every
 
@@ -253,6 +268,57 @@ var cart = ["laptop", "bag", "marker", "mobile", "ccd"];
 // console.log(arr.fill(0 , 2 , 4));
 // console.log(arr.fill(99 , 1 , 4));
 // console.log(arr.fill(7 , 3 , 4));
+// Fill with 0 from position 2 until position 4
+// console.log(arr.fill(0, 2, 4)); //[1, 2, 0, 0]
 
 
 
+//! with (index, val)
+
+// const arr = [1, 2, 3, 4, 5];
+// console.log(arr.with(-2, 10)); // [1, 2, 6, 4, 5]
+// console.log(arr); // [1, 2, 3, 4, 5]
+
+
+
+
+
+//! Array.reduce() : The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value. It processes the array from left to right and carries an "accumulator" value along with it.
+
+//~ Syntax : reduce(callbackFn, initialValue)
+
+//~ CallbackFn : A function to execute for each element in the array. Its return value becomes the value of the accumulator.For the last invocation, the return value becomes the return value of reduce(). The function is called with the following arguments: callbackFn(Accumulator , currentValue , currentIndex, array)
+//~ initialValue : It's the starting point for the accumulation process. If you provide an initialValue, the accumulator in the first iteration of reduce() will be set to this value, and the reducer function will be executed on the first element of the array.
+
+
+// const array1 = [1, 2, 3, 4];
+
+// const initVal = 0;
+
+// const sum = array1.reduce(
+//   (acc, currVal) => acc + currVal,
+//   initVal,
+// );
+
+// console.log(sum);
+
+
+// const users = [
+//     { fName : "akshay", lName : "saini" , age : 26},
+//     { fName : "donald", lName : "trump" , age : 75},
+//     { fName : "elon", lName : "musk" , age : 50},
+//     { fName : "deepika", lName : "padukone" , age : 26},
+// ]
+
+// // const output = users.filter((x)=> x.age<30).map(x => x.fName)
+// // console.log(output);
+
+// const res = users.reduce((acc, val) => {
+//     console.log(acc);
+//     console.log(val);
+//     if (val.age < 30) {
+//         acc.push(val.fName);
+//     }
+//     return acc;
+// }, []);
+// console.log(res);

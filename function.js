@@ -10,7 +10,6 @@
 //~ Arguments :
 // Arguments are the values passed to a function block for its execution.
 
-// 
 
 //~ Types of Functions // Ways of declaring JS Functions
 // Function-declaration / Statement
@@ -44,22 +43,22 @@
 
 //! Anonymous Fn
 
-// Anonymous Fn  is a function names.
-// These function are not decclared using the typical function keyword follwed by a name.
+// Anonymous Fn  is a function without names.
+// These function are not decclared using the typical function keyword followed by a name.
 // Anonymous function are useful in situatin where a function is need for a short period and does not require reuse.
 // Anonymous Fn can access the variable which is declared outside the function
 // We can call these function only once.
 
-// let name = "Nik"
-// (
-//     function (){
+// let name = "Nik";
+
+//     (function (){
 //         name = "raj"
 //         console.log(name);
-//     }
-// )()
+//     })()
+
 
 //! Functional Expression
-// Together first class function and identifier, it is known as first class function.
+// Together first class function and identifier, it is known as first with expression.
 // Function expressions can be named or anonmous.
 // They are not hoisted , meaning they are accessible only after their definition
 // Frequently used in callbacks, closures, and dynamic function creation
@@ -110,7 +109,7 @@
 //     }
 // )()
 
-// & Global pollution in JS refers to the unintentional modification or addition of vaiable and functions to the global scope. An immediately Invoked FUnction Expressioin is a design pattern used to create a priate scope, preventing variable declared within it from polluting the global scope.
+// & Global variable pollution in JS refers to the unintentional modification or addition of vaiable and functions to the global scope. An immediately Invoked FUnction Expressioin is a design pattern used to create a private scope, preventing variable declared within it from polluting the global scope.
 
 
 // (
@@ -263,7 +262,7 @@
 //     return arguments[0]+ arguments[1]
 // }
 
-//! Arguments object is not available in arrow function
+//! Arguments object is not available in arrow function. It contains the values of the arguments passed to that function. It is not a true array, but it has a length property and can be accessed using indexed notation (e.g., arguments[0]).
 
 // var num = () => {
 //     return arguments[0]
@@ -349,17 +348,23 @@
 // }
 
 
-// function* pid(){
-//    yield 101;
-//    yield "102";
-//    yield 103;
-//    yield 104;
-//    yield 105;
-//    yield 106;
-// }
+function* pid(){
+   yield 101;
+   yield "102";
+   yield 103;
+   yield 104;
+   yield 105;
+   yield 106;
+}
 
-// var generated_pid = pid()
-// console.log("Bag", generated_pid.next().value);
+var generated_pid = pid()
+console.log(generated_pid.next());
+console.log(generated_pid.next());
+console.log(generated_pid.next());
+console.log(generated_pid.next());
+console.log(generated_pid.next());
+console.log(generated_pid.next());
+console.log(generated_pid.next());
 
 // var a = 20;
 // var b = 30;
@@ -373,17 +378,40 @@
 // It solves a problem by solving smaller instances of the same problem.
 // In developing essential component in developing effiecient divide and conquer algorithms.
 
+// function launchCountdown(seconds) {
+//     console.log(`T-minus ${seconds} seconds...`);
 
-function sumUpTo(n) {
-    // Base case: If n is 1, the sum is 1.
-    if (n === 1) {
-      return 1;
-    } else {
-      // Recursive step: sum(n) = n + sum(n-1)
-      return n + sumUpTo(n - 1);
-    }
-}
+//     // Base Case: If we reach 0 or less, stop!
+//     if (seconds <= 0) {
+//         console.log("Launch!");
+//         return; // This is the STOP condition
+//     }
+
+//     // Recursive Call: Call the function again for the next second
+//     launchCountdown(seconds - 1); // Countdown the next second
+// }
+
+// launchCountdown(5); // Start the countdown from 5 seconds
+// Expected Output:
+// T-minus 5 seconds...
+// T-minus 4 seconds...
+// T-minus 3 seconds...
+// T-minus 2 seconds...
+// T-minus 1 seconds...
+// T-minus 0 seconds...
+// Launch!
+
+
+// function sumUpTo(n) {
+//     // Base case: If n is 1, the sum is 1.
+//     if (n === 1) {
+//       return 1;
+//     } else {
+//       // Recursive step: sum(n) = n + sum(n-1)
+//       return n + sumUpTo(n - 1);
+//     }
+// }
   
-const number = 5;
-const sum = sumUpTo(number);
-console.log(`The sum of numbers from 1 to ${number} is: ${sum}`); // Output: The sum of numbers from 1 to 5 is: 15
+// const number = 5;
+// const sum = sumUpTo(number);
+// console.log(`The sum of numbers from 1 to ${number} is: ${sum}`); // Output: The sum of numbers from 1 to 5 is: 15

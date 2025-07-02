@@ -35,7 +35,7 @@ function displayInfo(fees, branch){
     );
 }
 
-//! Call : It is used to call a function with specified this value and argument provided individually. It accepts 2 arguments. 1st argument is the function for which we want to call the method and second argument is passed to the method as the arguments.
+//! Call : It is used to call a function with specified this value and argument provided individually. It accepts 2 arguments. 1st argument is the obj for which we want to call the method and second argument is passed to the method as the arguments.
 
 // Syntax : method.call(object identifier where this keyword will point, arg1, arg2)
 

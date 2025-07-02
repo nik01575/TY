@@ -1,20 +1,21 @@
 // "use strict";
 // a =  10
 
-const { jsx } = require("react/jsx-runtime");
+// const { jsx } = require("react/jsx-runtime");
 
 // console.log(window);
 
 // let aa = 10;
 // function abc (){
-//     "use strict";
+//     // "use strict";
 //     console.log(aa);
-// console.log(this);
+//     console.log(this);
 // }
 // abc()
 
 // function abca (){
-//     this = NaN;
+//   // "use strict"
+//     this.this = NaN;
 //     console.log(aa);
 //     console.log(this);
 // }
@@ -54,14 +55,15 @@ const { jsx } = require("react/jsx-runtime");
 //! Inside the method of the object in strict or non-strict condition, this will point to the current object.
 
 // let a = {
-//     val : "something",
+//     val : this,
 //     print() {
 //         console.log(this.val);
 //         return "apple";
 //     }
 // }
 
-// console.log(a["print"]());
+// // console.log(a["print"]());
+// console.log(a.print());
 
 //& Lexical scope, also known as static scope, determines a variable's accessibility in a program based on where it's declared in the code's structure. Essentially, a function has acccess to variables in its own scope and the scope of its parent functions, all the way up to the global scope. This means an inner function can access the variables from its outer functin, but not vice versa.
 
@@ -70,33 +72,50 @@ const { jsx } = require("react/jsx-runtime");
 
 //~ arrowFunction : It will depend based on the lexical scope.
 
-// let person = {
+
+// let a = {
 //     val : this,
-//     name: "abc",
-//     address : "Banglore",
-
-//     fun(){
-//         console.log(this); // obj
+//     name : "abc" ,
+//     print() {
+//         console.log(this.val);
+//         return "apple";
 //     },
-
-//     printName : () => {
-//         console.log(this); // window : lexical scoping
-
-//     },
-//     sayHello(){
-//         console.log(this);  // object
-
-//         let a = () => {
-//             console.log(this); // object
-
-//             function say(){
-//                 console.log(this); // window
-//             }
-//             say()
-//         }
-//         a()
+//     arr : ()=>{
+//       console.log(this);
 //     }
 // }
+// console.log(a.arr());
+
+let person = {
+    val : this,
+    name: "abc",
+    address : "Banglore",
+
+    fun(){
+        console.log(this); // obj
+    },
+
+    printName : () => {
+        console.log(this); // window : lexical scoping
+    },
+
+    sayHello(){
+        console.log(this);  // object
+
+        let a = () => {
+            console.log(this); // object
+
+            function say(){
+                console.log(this); // window
+            }
+            say()
+        }
+        a()
+    }
+}
+
+
+
 
 // console.log(person.printName());
 // console.log(person.val);
@@ -128,52 +147,47 @@ const { jsx } = require("react/jsx-runtime");
 // }
 // console.log(b);
 
-// Introduction of js
-// History
-// Characteristic : Java / Js
-// JSE
-// js file linking
-// tokens
 
-var value = "Global Value";
 
-const obj = {
-  value: "Object Value",
-  method: function () {
-    console.log("1:", this.value);
+// var value = "Global Value";
 
-    const arrowFunc = () => {
-      console.log("2:", this.value);
-    };
-    arrowFunc();
+// const obj = {
+//   value: "Object Value",
+//   method: function () {
+//     console.log("1:", this.value);
 
-    function regularFunc() {
-      console.log("3:", this.value);
-    }
-    regularFunc();
+//     const arrowFunc = () => {
+//       console.log("2:", this.value);
+//     };
+//     arrowFunc();
 
-    const anotherObj = {
-      value: "Another Object Value",
-      innerMethod: function () {
-        console.log("4:", this.value);
-        const innerArrow = () => {
-          console.log("5:", this.value);
-        };
-        innerArrow();
-      },
-    };
-    anotherObj.innerMethod();
-  },
-};
+//     function regularFunc() {
+//       console.log("3:", this.value);
+//     }
+//     regularFunc();
 
-const f1 = obj.method;
-const f2 = obj.method.bind({ value: "Bound Value" });
-const f3 = () => obj.method(); // Arrow function wrapper
+//     const anotherObj = {
+//       value: "Another Object Value",
+//       innerMethod: function () {
+//         console.log("4:", this.value);
+//         const innerArrow = () => {
+//           console.log("5:", this.value);
+//         };
+//         innerArrow();
+//       },
+//     };
+//     anotherObj.innerMethod();
+//   },
+// };
 
-obj.method();
-console.log("---");
-f1();
-console.log("---");
-f2();
-console.log("---");
-f3();
+// const f1 = obj.method;
+// const f2 = obj.method.bind({ value: "Bound Value" });
+// const f3 = () => obj.method(); // Arrow function wrapper
+
+// obj.method();
+// console.log("---");
+// f1();
+// console.log("---");
+// f2();
+// console.log("---");
+// f3();
